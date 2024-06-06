@@ -1,0 +1,20 @@
+{% extends 'layouts/base2.html' %}
+
+{% block body %}
+<div class="card" style="width: 40rem;">
+  <div class="card-header">
+    <p class="card-text">{{article.titre}}</p>
+  </div>
+  <img src="{{ article.image_url.url }}" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="card-text">Description: {{article.description}}</p>
+    <p class="card-text">Utilisateur: {{ article.user_id.username }}</p>
+    <p class="card-text">Catégories: {{ article.categories }}</p>
+    <p class="card-text">Prix: {{ article.prix}} DH</p>
+    <p class="card-text">Région: {{ article.region}}</p>
+    <p class="card-text">Contact : {{ profil.tel}}</p>
+    <p class="card-text">Email: {{ article.user_id.email }}</p>
+  </div>
+  <a href="{% url 'index2' %}" class="btn btn-primary">Retour</a>  
+</div>
+{% endblock %}

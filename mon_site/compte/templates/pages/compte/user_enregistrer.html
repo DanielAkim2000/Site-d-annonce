@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+Inscription
+{% endblock %}
+
+{% block body %}
+<form method="post" enctype="multipart/form-data">
+    <div>
+      <legend>Nouveau compte</legend>
+      {%if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+      <p class="text_danger"><strong>{{ error }}</strong></p>
+      {% endfor %}
+      {% endif %}
+      {%if profil.non_field_errors %}
+      {% for error in profil.non_field_errors %}
+      <p class="text_danger"><strong>{{ error }}</strong></p>
+      {% endfor %}
+      {% endif %}
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="mb-3">
+        <label for="TextInput" class="form-label">{{ field.label_tag }}{% if field.field.required %} <span class="required">*</span> {% endif %}</label>
+        {{ field }}
+        {% if field.help_text %}
+         <p class="help">
+           {{ field.help_text }}
+         </p>
+         {% endif %}
+         {% if field.errors %}
+         {% for error in field.errors %}
+         <p class="text-danger"><strong>{{ error }}</strong></p>
+         {% endfor %}
+         {% endif %}
+      </div>
+      {% endfor %}
+      {% for field in profil %}
+      <div class="mb-3">
+        <label for="TextInput" class="form-label">{{ field.label_tag }}{% if field.field.required %} <span class="required">*</span> {% endif %}</label>
+        {{ field }}
+        {% if field.help_text %}
+         <p class="help">
+           {{ field.help_text }}
+         </p>
+         {% endif %}
+         {% if field.errors %}
+         {% for error in field.errors %}
+         <p class="text-danger"><strong>{{ error }}</strong></p>
+         {% endfor %}
+         {% endif %}
+      </div>
+      {% endfor %}
+      <input type="submit" class="btn btn-primary" value="Enregistrer"></input>
+    </div>
+  </form>
+{% endblock %}

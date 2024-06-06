@@ -1,0 +1,57 @@
+{% extends 'layouts/base2.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block head%}
+{% endblock %}
+
+
+{% block body %}
+<p>
+
+
+  
+</p>
+<ul>
+  <div class="row row-cols-md-4 row-cols-sm-3">
+    {% for article in articles %}
+  <div class="col">
+      <div class="card  shadow" style="width: 18rem;">
+          <img src="{{ article.image_url.url }}"  alt="">
+          <div class="card-body">
+            <h5 class="card-title">Titre:{{ article.titre }}</h5>
+            <p class="card-text">Description:{{ article.description|truncatechars:"20" }}</p>
+            <p class="card-text">Prix:{{ article.prix }} DH</p>
+            <p class="card-text">Utilisateur:{{ article.user_id.username }}</p>
+            <a href="{% url 'article2' article.id %}" class="btn btn-primary">Voir article</a>
+          </div>
+        </div>
+  </div>
+    {% endfor %}
+  </div>
+ 
+</ul>
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+   {% if articles.has_previous %} 
+    <li class="page-item">
+      <a class="page-link" href="?page={{ articles.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="#">Page {{ articles.number }} sur {{ articles.paginator.num_pages}}</a></li>
+    {% if articles.has_next %} 
+    <li class="page-item">
+      <a class="page-link" href="?page={{ articles.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

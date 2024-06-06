@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Needa</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'login' %}">Connexion</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Catégories
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Appareils électroniques'  %}">Appareils Életroniques</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Véhicules' %}">Véhicules</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Vêtements' %}">Vêtements</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Petites annonces' %}">Petites annonces</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Immobilier' %}">Immobilier</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Loisirs' %}">Loisirs</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Musique' %}">Musique</a></li>
+              <li><a class="dropdown-item" href="{% url 'recherche_categories2' 'Sports' %}">Sports</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_enregistrer' %}">Inscription</a>
+          </li>
+        </ul>
+        <form action="{% url 'rechercher_article2' %}" class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Rechercher" name="recherche2" aria-label="Search">
+          <button class="btn btn-outline-success"  type="submit">Rechercher</button>
+        </form>
+      </div>
+    </div>
+  </nav>
